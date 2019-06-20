@@ -2,6 +2,73 @@
   line-height: 2.5;
 }
 
-h2{
-  color: green;
+h1 {
+  color: #c63441;
+  font-family: "Permanent Marker", cursive;
+}
+
+h3 {
+  color: #c63441;
+  font-family: "Raleway", sans-serif;
+}
+
+body {
+  background-image: url("background.png");
+  /* background-size: cover; */
+  background-repeat: repeat;
+}
+
+.jumbotron {
+  background: #96bebe;
+  text-align: center;
+  color: #c63441;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* border-bottom-color: #f9d330;
+  border-bottom: 5px; */
+}
+
+.panel-primary {
+  border-color: #96bebe;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.panel-heading {
+  background: #96bebe;
+  background-color: #96bebe;
+}
+
+.panel-primary > .panel-heading {
+  background: #96bebe;
+  background-color: #96bebe;
+  border-color: #96bebe;
+}
+
+.btn-primary {
+  background-color: #96bebe;
+  border-color: #96bebe;
+  margin-top: 20px;
+  float: left;
+  /* margin:px; */
+}
+
+/* .bunnyButton {
+  float: left;
+} */
+
+/* .bunnies {
+  float: left;
+} */
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
 }

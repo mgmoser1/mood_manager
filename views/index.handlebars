@@ -1,33 +1,46 @@
-<div id="home">
+<!-- Jumbotron -->
+<div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is TEAM GREEN'S Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
+    <div class="media">
+      <img src="bunnyLogoSmall.png" class="mr-3" alt="Track Rabbit Logo" />
+    </div>
+    <h1 class="display-4">Track Rabbit</h1>
+    <h3 class="lead">Keeping track so you don't have to.</h3>
+  </div>
+</div>
+
+<!-- Week In Review -->
+
+<div class="container">
+  <div class="trainTable">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title text-center">Week In Review</h4>
       </div>
+      <div class="panel-body"></div>
     </div>
   </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<!-- Navigation Buttons -->
+
+<!-- Mood Nav -->
+
+<div class="container">
+  <div class="row">
+    <button type="button" class="btn btn-primary text-center col-xs-6">
+      <h4>Mood</h4>
+    </button>
+
+    <!-- Exercise & Activity Nav -->
+
+    <button type="button" class="btn btn-primary text-center col-xs-6">
+      <h4>Exercise & Activity</h4>
+    </button>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
