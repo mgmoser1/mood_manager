@@ -13,9 +13,20 @@ module.exports = function(app) {
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+    db.Example.findOne({ where: { id: req.params.id } }).then(function(
+      dbExample
+    ) {
       res.render("example", {
         example: dbExample
+      });
+    });
+  });
+
+  // Load overview page and pass either week (7 days) or month (30 days) view, default is month view
+  app.get("/examples/", function(req, res) {
+    db.Example.findAll().then(function(dbExamples) {
+      res.render("overview", {
+        examples: dbExamples
       });
     });
   });

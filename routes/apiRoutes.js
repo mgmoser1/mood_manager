@@ -15,6 +15,13 @@ module.exports = function(app) {
     });
   });
 
+  // Create a new user
+  app.post("/api/user", function(req, res) {
+    db.User.create(req.body).then(function(user) {
+      res.json(user);
+    });
+  });
+
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
