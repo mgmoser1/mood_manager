@@ -2,9 +2,19 @@ language: node_js
 node_js: "8"
 branches:
   only:
-  - master
+    - master
 cache:
   directories:
     - node_modules
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+      - mysql-client
+services:
+  - mysql
 before_install:
-  - mysql -e 'CREATE DATABASE testdb;'
+  - mysql -e 'DROP DATABASE IF EXITS testdb;'
+    - mysql -e 'CREATE DATABASE testdb;'

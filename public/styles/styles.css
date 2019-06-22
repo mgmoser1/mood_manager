@@ -2,6 +2,60 @@
   line-height: 2.5;
 }
 
-h2{
-  color: green;
+h1 {
+  color: #c63441;
+  font-family: "Permanent Marker", cursive;
+}
+
+h3 {
+  color: #c63441;
+  font-family: "Raleway", sans-serif;
+}
+
+body {
+  background-image: url("background.png");
+  background-repeat: repeat;
+}
+
+.jumbotron {
+  background: #96bebe;
+  text-align: center;
+  color: #c63441;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.rabbitLogo {
+  max-width: 75px;
+}
+
+.panel-primary {
+  border-color: #96bebe;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.panel-heading {
+  background: #96bebe;
+  background-color: #96bebe;
+}
+
+.panel-primary > .panel-heading {
+  background: #96bebe;
+  background-color: #96bebe;
+  border-color: #96bebe;
+}
+
+.btn-primary {
+  background-color: #96bebe;
+  border-color: #96bebe;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.button-col {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
