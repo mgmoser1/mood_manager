@@ -1,8 +1,11 @@
+
 // Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -27,8 +30,31 @@ var API = {
       url: "api/examples/" + id,
       type: "DELETE"
     });
+  },
+  createUser: function() {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      url: "api/user",
+      type: "POST"
+    }).then(function(res) {
+      localStorage.setItem("trackRabbit", res.id);
+    });
   }
 };
+
+//Check for user information stored in local storage
+localStorage = window.localStorage;
+
+if (!localStorage.getItem("trackRabbit")) {
+  //const userID = Math.floor(Math.random() * 10000);
+  //localStorage.setItem("trackRabbit", userID);
+  //create new user
+  API.createUser();
+} 
+
+const userID = localStorage.getItem("trackRabbit");
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
