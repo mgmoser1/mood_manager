@@ -8,7 +8,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/mood", function(req, res) {
+  app.get("/api/exercise", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
     });

@@ -1,6 +1,6 @@
 
 // Get references to page elements
-var $submitBtn2 = $("#neutral");
+var $submitBtn2 = $("#weights");
 var $mood = $("#mood");
 var $submitBtn = $("#treadmill");
 var $submitBtn3 = $("#happy");
@@ -21,7 +21,7 @@ var API = {
     },
     getExamples: function() {
       return $.ajax({
-        url: "api/examples",
+        url: "/api/exercise",
         type: "GET"
       });
     },
@@ -91,3 +91,37 @@ var API = {
   
     $submitBtn.val("");
   };
+
+  var handleFormSubmit2 = function(event) {
+    event.preventDefault();
+  
+    var example = {
+      description: $submitBtn2.val()
+    };
+  
+    API.saveExample(example).then(function() {
+      refreshExamples();
+    });
+  
+    $submitBtn2.val("");
+  };
+  
+  
+  var handleFormSubmit3 = function(event) {
+    event.preventDefault();
+  
+    var example = {
+      description: $submitBtn3.val()
+    };
+  
+    API.saveExample(example).then(function() {
+      refreshExamples();
+    });
+  
+    $submitBtn3.val("");
+  };
+
+  // Add event listeners to the submit and delete buttons
+$submitBtn.on("click", handleFormSubmit);
+$submitBtn2.on("click", handleFormSubmit2);
+$submitBtn3.on("click", handleFormSubmit3);
