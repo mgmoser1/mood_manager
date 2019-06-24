@@ -1,9 +1,9 @@
 
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+var $submitBtn2 = $("#neutral");
+var $mood = $("#mood");
+var $submitBtn = $("#sad");
+var $submitBtn3 = $("#happy");
 
 
 
@@ -15,20 +15,14 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
+      url: "/api/mood",
       data: JSON.stringify(example)
     });
   },
   getExamples: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "/api/mymood",
       type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
     });
   },
   createUser: function() {
@@ -71,17 +65,13 @@ var refreshExamples = function() {
         })
         .append($a);
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
       $li.append($button);
 
       return $li;
     });
 
-    $exampleList.empty();
-    $exampleList.append($examples);
+    $mood.empty();
+    $mood.append($examples);
   });
 };
 
@@ -91,35 +81,48 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+    description: $submitBtn.val()
   };
-
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
 
   API.saveExample(example).then(function() {
     refreshExamples();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  $submitBtn.val("");
 };
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
+var handleFormSubmit2 = function(event) {
+  event.preventDefault();
 
-  API.deleteExample(idToDelete).then(function() {
+  var example = {
+    description: $submitBtn2.val()
+  };
+
+  API.saveExample(example).then(function() {
     refreshExamples();
   });
+
+  $submitBtn2.val("");
 };
+
+
+var handleFormSubmit3 = function(event) {
+  event.preventDefault();
+
+  var example = {
+    description: $submitBtn3.val()
+  };
+
+  API.saveExample(example).then(function() {
+    refreshExamples();
+  });
+
+  $submitBtn3.val("");
+};
+
+
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$submitBtn2.on("click", handleFormSubmit2);
+$submitBtn3.on("click", handleFormSubmit3);
