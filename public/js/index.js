@@ -1,9 +1,17 @@
 
 // Get references to page elements
-var $submitBtn2 = $("#neutral");
-var $mood = $("#mood");
-var $submitBtn = $("#sad");
-var $submitBtn3 = $("#happy");
+//var $submitBtn2 = $("#neutral");
+var $submitid = $("#submitbtn");
+var $moodid = $("#mood");
+var $exerciseid = $("#exercise");
+var $sad = $(".sad");
+var $neutral = $(".neutral");
+var $happy = $(".happy");
+var $treadmill = $(".treadmill");
+var $weights = $(".weights");
+var $bike = $(".bike");
+
+
 
 
 
@@ -80,49 +88,34 @@ var refreshExamples = function() {
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var example = {
-    description: $submitBtn.val()
+  var day = {
+    mood: $moodid.val(),
+    exercise: $exerciseid.val()
   };
 
-  API.saveExample(example).then(function() {
+  API.saveExample(day).then(function() {
     refreshExamples();
   });
 
-  $submitBtn.val("");
+  //$submitBtn.val("");
 };
 
-var handleFormSubmit2 = function(event) {
+var selectmood = function(event) {
   event.preventDefault();
-
-  var example = {
-    description: $submitBtn2.val()
-  };
-
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
-
-  $submitBtn2.val("");
+  this.setAttribute("id", "mood");
 };
 
-
-var handleFormSubmit3 = function(event) {
+var selectexercise = function(event) {
   event.preventDefault();
-
-  var example = {
-    description: $submitBtn3.val()
-  };
-
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
-
-  $submitBtn3.val("");
+  this.setAttribute("id", "exercise");
 };
 
 
-
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$submitBtn2.on("click", handleFormSubmit2);
-$submitBtn3.on("click", handleFormSubmit3);
+// Add event listeners to the submit button
+$sad.on("click", selectmood);
+$neutral.on("click", selectmood);
+$happy.on("click", selectmood);
+$treadmill.on("click", selectexercise);
+$weights.on("click", selectexercise);
+$bike.on("click", selectexercise);
+$submitid.on("click", handleFormSubmit);
