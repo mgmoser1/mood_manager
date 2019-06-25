@@ -1,9 +1,11 @@
 var db = require("../models");
 
+const Example = 's03a3gg4y7sdw9yb';
+
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.Example.findAll().then(function(dbExamples) {
       res.render("index", {
         msg: "Welcome!",
         examples: dbExamples
