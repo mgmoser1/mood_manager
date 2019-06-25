@@ -1,4 +1,3 @@
-
 // Get references to page elements
 //var $submitBtn2 = $("#neutral");
 var $submitid = $("#submitbtn");
@@ -10,8 +9,6 @@ var $happy = $(".happy");
 var $treadmill = $(".treadmill");
 var $weights = $(".weights");
 var $bike = $(".bike");
-
-
 
 
 
@@ -54,7 +51,7 @@ if (!localStorage.getItem("trackRabbit")) {
   //localStorage.setItem("trackRabbit", userID);
   //create new user
   API.createUser();
-} 
+}
 
 const userID = localStorage.getItem("trackRabbit");
 

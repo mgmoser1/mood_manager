@@ -65,3 +65,31 @@ body {
 .choice-button {
   vertical-align: center;
 }
+
+.btn {
+  z-index: 1;
+  text-align: center;
+  color: whitesmoke;
+  padding: 0.5em 1em;
+}
+
+.btn:hover {
+  cursor: pointer;
+  animation: jelly 0.5s;
+}
+
+@keyframes jelly {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
