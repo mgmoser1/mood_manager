@@ -1,11 +1,8 @@
-
 // Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
-
-
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -52,7 +49,7 @@ if (!localStorage.getItem("trackRabbit")) {
   //localStorage.setItem("trackRabbit", userID);
   //create new user
   API.createUser();
-} 
+}
 
 const userID = localStorage.getItem("trackRabbit");
 
