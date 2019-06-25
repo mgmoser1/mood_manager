@@ -1,8 +1,16 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+//var $submitBtn2 = $("#neutral");
+var $submitid = $("#submitbtn");
+var $moodid = $("#mood");
+var $exerciseid = $("#exercise");
+var $sad = $(".sad");
+var $neutral = $(".neutral");
+var $happy = $(".happy");
+var $treadmill = $(".treadmill");
+var $weights = $(".weights");
+var $bike = $(".bike");
+
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -12,20 +20,14 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
+      url: "/api/mood",
       data: JSON.stringify(example)
     });
   },
   getExamples: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "/api/mymood",
       type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
     });
   },
   createUser: function() {
@@ -68,17 +70,13 @@ var refreshExamples = function() {
         })
         .append($a);
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
       $li.append($button);
 
       return $li;
     });
 
-    $exampleList.empty();
-    $exampleList.append($examples);
+    $mood.empty();
+    $mood.append($examples);
   });
 };
 
@@ -87,36 +85,34 @@ var refreshExamples = function() {
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  var day = {
+    mood: $moodid.val(),
+    exercise: $exerciseid.val()
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
-
-  API.saveExample(example).then(function() {
+  API.saveExample(day).then(function() {
     refreshExamples();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  //$submitBtn.val("");
 };
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
-  });
+var selectmood = function(event) {
+  event.preventDefault();
+  this.setAttribute("id", "mood");
 };
 
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+var selectexercise = function(event) {
+  event.preventDefault();
+  this.setAttribute("id", "exercise");
+};
+
+
+// Add event listeners to the submit button
+$sad.on("click", selectmood);
+$neutral.on("click", selectmood);
+$happy.on("click", selectmood);
+$treadmill.on("click", selectexercise);
+$weights.on("click", selectexercise);
+$bike.on("click", selectexercise);
+$submitid.on("click", handleFormSubmit);
