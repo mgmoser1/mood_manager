@@ -16,5 +16,5 @@ addons:
 services:
   - mysql
 before_install:
-  - mysql -e 'DROP DATABASE IF EXITS testdb;'
+  - mysql -e 'DROP DATABASE IF EXISTS testdb;'
     - mysql -e 'CREATE DATABASE testdb;'
