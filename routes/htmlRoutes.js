@@ -1,11 +1,11 @@
 var db = require("../models");
 
-const Example = 's03a3gg4y7sdw9yb';
+
 
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll().then(function(dbExamples) {
+    db.Post.findAll().then(function(dbExamples) {
       res.render("index", {
         msg: "Welcome!",
         examples: dbExamples
@@ -25,7 +25,7 @@ module.exports = function(app) {
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(
+    db.Post.findOne({ where: { id: req.params.id } }).then(function(
       dbExample
     ) {
       res.render("example", {
@@ -36,7 +36,7 @@ module.exports = function(app) {
 
   // Load overview page and pass either week (7 days) or month (30 days) view, default is month view
   app.get("/examples/", function(req, res) {
-    db.Example.findAll().then(function(dbExamples) {
+    db.Post.findAll().then(function(dbExamples) {
       res.render("overview", {
         examples: dbExamples
       });
