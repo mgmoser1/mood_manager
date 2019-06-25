@@ -30,7 +30,7 @@ body {
 }
 
 .panel-primary {
-  border-color: #96bebe;
+  border-color: #a67392;
   margin-top: 20px;
   margin-bottom: 0px;
 }
@@ -43,19 +43,25 @@ body {
 .panel-primary > .panel-heading {
   background: #96bebe;
   background-color: #96bebe;
-  border-color: #96bebe;
+  border-color: #a67392;
 }
 
 .btn-primary {
   background-color: #96bebe;
-  border-color: #96bebe;
+  border-color: #a67392;
   margin-top: 20px;
   margin-bottom: 20px;
+  display: block;
+  width: 100%;
 }
 
 .button-col {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  vertical-align: center;
+}
+
+.choice-button {
+  vertical-align: center;
 }
